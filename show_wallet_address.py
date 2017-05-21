@@ -11,7 +11,7 @@ def show_wallet_address():
   text = PapirusText()
 
   if not os.path.exists(".wallet"):
-    priv = sha256(random.SystemRandom().choice(string.ascii_uppercase + string.digits))
+    priv = sha256(''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(32)))
     pub = privtopub(priv)
     addr = pubtoaddr(pub)
     wallet_json = {}
